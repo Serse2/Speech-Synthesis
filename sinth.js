@@ -21,6 +21,7 @@ const listFilter = voices
 filterDropdown.innerHTML = listFilter
 }
 
+
 function setFilter(){
 msg.lang = voices.find(lang => (lang.lang === this.value))
 console.log(filterDropdown.value)
