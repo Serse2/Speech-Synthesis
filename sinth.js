@@ -10,28 +10,14 @@ const stopButton = document.querySelector('#stop');
 
 //accedo alla proprietà text dell'oggetto msg assegnandole il valore contenuto nel text box
 msg.text = document.querySelector('[name="text"]').value;
-msg.lang = setFilter()
+// msg.lang = setFilter()
 console.log(msg)
 
-function addFilter(){
-voices = this.getVoices()
-const listFilter = voices
-.map(voice =>(`<option value="${voice.lang}">${voice.lang}</option>`))
-.join('')
-filterDropdown.innerHTML = listFilter
-}
-
-
-function setFilter(){
-msg.lang = voices.find(lang => (lang.lang === this.value))
-console.log(filterDropdown.value)
-return filterDropdown.value
-}
 
 function addListVoice(){
 voices = this.getVoices()
 const listVoices = voices
-// .filter(voice => (voice.lang.includes(`${msg.lang}`)))
+.filter(voice => (voice.lang.includes('it')))
 .map(voice =>(`<option value="${voice.name}">${voice.name} (${voice.lang})</option>`))
 .join('')
 // console.log(listVoices)
@@ -61,8 +47,6 @@ toggle()
 
 voicesDropdown.addEventListener('change', setVioce);
 speechSynthesis.addEventListener('voiceschanged', addListVoice);
-filterDropdown.addEventListener('change', setFilter)
-speechSynthesis.addEventListener('voiceschanged', addFilter);
 options.forEach(option => option.addEventListener('change', setOption));
 speakButton.addEventListener('click', toggle);
 stopButton.addEventListener('click', () => toggle(false));
